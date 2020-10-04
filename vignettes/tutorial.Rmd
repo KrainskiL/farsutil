@@ -1,0 +1,65 @@
+---
+title: "Tutorial for farsutil package"
+author: "Lukasz Krainski"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tutorial for farsutil package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(farsutil)
+```
+
+## Exported functions
+
+- `fars_read()`
+- `make_filename()`
+- `fars_read_years()`
+- `fars_summarize_years()`
+- `fars_map_state()`
+
+## Reading FARS data files
+
+The function `fars_read()` read data from provided filename (returns a `tibble`):
+
+```{r fars_read_example}
+fars_read(filename)
+```
+
+It utilizes `make_filename()` auxilary function.
+
+```{r fars_makefile}
+make_filename(2015)
+```
+
+To read multiple years at once use `fars_read_years()` function.
+
+```{r fars_makefile}
+fars_read_years(2013:2015)
+```
+
+## Summarize number of accidents
+
+`fars_summarize_years()` returns a pivot table with number of accidents per year and month for provided years. Data must be located in the working directory.
+
+```{r fars_summarize_years}
+fars_summarize_years(2013:2015)
+```
+
+## Plot accident locations
+
+`fars_map_state()` returns a plot with accident locations for the given state.
+
+```{r fars_map_state}
+fars_map_state(45, 2015)
+```
+
