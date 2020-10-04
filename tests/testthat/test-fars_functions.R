@@ -1,3 +1,7 @@
+library(dplyr)
+library(maps)
+setwd(system.file("data", package = "farsutil"))
+
 test_that("fars_read() works as expected", {
   expect_is(fars_read("accident_2015.csv.bz2"), "tbl_df")
   expect_error(fars_read("accident_2017.csv.bz2"))
