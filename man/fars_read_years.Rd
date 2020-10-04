@@ -19,6 +19,6 @@ is not available for any year, the list entry for that year is NULL
 }
 \examples{
    \dontrun{fars_read_years(c(2013,2015))}
-   \dontrun{fars_read_years((2013:2015))}
+   \dontrun{fars_read_years(2013:2015)}
 
 }
