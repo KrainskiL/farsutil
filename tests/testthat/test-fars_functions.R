@@ -13,6 +13,5 @@ test_that("fars_summarize_years() works as expected", {
 })
 
 test_that("fars_map_state() works as expected", {
-  expect_silent(fars_map_state(1, 2015))
   expect_error(fars_map_state(1, 2017))
 })
