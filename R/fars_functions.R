@@ -57,7 +57,7 @@ make_filename <- function(year) {
 #'
 #' @examples
 #'    \dontrun{fars_read_years(c(2013,2015))}
-#'    \dontrun{fars_read_years((2013:2015))}
+#'    \dontrun{fars_read_years(2013:2015)}
 #'
 #' @export
 fars_read_years <- function(years) {
@@ -65,10 +65,10 @@ fars_read_years <- function(years) {
     file <- make_filename(year)
     tryCatch({
       dat <- fars_read(file)
-      dplyr::mutate(dat, year = year) %>% 
+      dplyr::mutate(dat, year = year) %>%
         dplyr::select(MONTH, year)
     }, error = function(e) {
-      warning("invalid year: ", year)
+      error("invalid year: ", year)
       return(NULL)
     })
   })
@@ -95,9 +95,9 @@ fars_read_years <- function(years) {
 #' @export
 fars_summarize_years <- function(years) {
   dat_list <- fars_read_years(years)
-  dplyr::bind_rows(dat_list) %>% 
-    dplyr::group_by(year, MONTH) %>% 
-    dplyr::summarize(n = n()) %>%
+  dplyr::bind_rows(dat_list) %>%
+    dplyr::group_by(year, MONTH) %>%
+    dplyr::summarize(n = dplyr::n()) %>%
     tidyr::spread(year, n)
 }
 
@@ -129,7 +129,7 @@ fars_map_state <- function(state.num, year) {
   filename <- make_filename(year)
   data <- fars_read(filename)
   state.num <- as.integer(state.num)
-  
+
   if(!(state.num %in% unique(data$STATE)))
     stop("invalid STATE number: ", state.num)
   data.sub <- dplyr::filter(data, STATE == state.num)

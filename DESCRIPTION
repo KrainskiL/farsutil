@@ -1,16 +1,18 @@
 Package: farsutil
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person(given = "First",
-           family = "Last",
-           role = c("aut", "cre"),
-           email = "first.last@example.com",
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to
-    pick a license
+Title: Package with utility functions for FARS data
+Version: 0.9.0
+Author: Lukasz Krainski [aut,cre]
+Maintainer: Lukasz Krainski <lukasz.krainski123@gmail.com>
+Description: This package includes functions to load and analyze FARS data (http://www-fars.nhtsa.dot.gov/).
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+URL: https://github.com/KrainskiL/farsutil
+BugReports: https://github.com/KrainskiL/farsutil/issues
